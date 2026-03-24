@@ -138,11 +138,11 @@
         <i data-lucide="map-pin" class="w-14 h-14 mx-auto my-6 text-[#d4a574]"></i>
         <p class="text-2xl font-medium">Param Banquets</p>
         <p class="text-[#8b7355]">Ground Floor, Amber Arcade, Below Wavikar Eye Institute, Majiwada, Thane West</p>
-        <a href="https://maps.google.com/?q=Bandra+West+Mumbai" target="_blank" class="mt-8 inline-block text-[#d4a574] underline hover:text-[#3d2817]">Open in Google Maps →</a>
+        <a href="https://maps.app.goo.gl/QxEMF8s4GbaijQg96" target="_blank" class="mt-8 inline-block text-[#d4a574] underline hover:text-[#3d2817]">Open in Google Maps →</a>
       </div>
     </section>
 
-    <!-- DRESS CODE -->
+    <!-- Personal Note -->
     <section class="section" id="dress">
       <div>
         <h2 class="section-title">A Note From Us</h2>
@@ -163,10 +163,6 @@
           <option value="2" selected>2 People</option>
           <option value="3">3 People</option>
           <option value="4">4 People</option>
-          <option value="5">5 People</option>
-          <option value="6">6 People</option>
-          <option value="7">7 People</option>
-          <option value="8">8 People</option>
         </select>
         <button id="rsvp-btn" class="rsvp-button w-full mt-10 hover-scale">Submit RSVP</button>
         <button onclick="checkHostAccess()" class="mt-12 text-[#d4a574] text-xs flex items-center gap-2 mx-auto hover-scale">
@@ -205,7 +201,7 @@
 
     // Countdown
     function startCountdown() {
-      const wedding = new Date('2026-12-15T16:00:00').getTime();
+      const wedding = new Date('2026-12-26T18:30:00').getTime();
       setInterval(() => {
         const diff = wedding - Date.now();
         document.getElementById('days').textContent = Math.floor(diff / (1000*60*60*24)).toString().padStart(2,'0');
