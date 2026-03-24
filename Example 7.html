@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Priya & Arjun Wedding Invitation - 15 December 2026">
+  <title>Priya & Arjun | Wedding Invitation</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes:wght@400&family=Cormorant+Garamond:wght@300;400&family=Lora:wght@400;500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root { --primary: #d4a574; }
+    body {
+      font-family: 'Lora', serif;
+      color: #2c1810;
+      background: linear-gradient(rgba(255,250,245,0.92), rgba(245,237,228,0.92)),
+                  url('https://images.unsplash.com/photo-1519741497674-611027288377?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover fixed;
+      margin: 0; padding: 0; overflow-x: hidden;
+    }
+
+    .floral-overlay {
+      position: fixed; inset: 0; pointer-events: none; z-index: 1;
+      background: radial-gradient(circle at 30% 40%, rgba(212,165,116,0.12) 0%, transparent 60%),
+                  radial-gradient(circle at 70% 60%, rgba(201,74,74,0.08) 0%, transparent 60%);
+    }
+
+    .petal {
+      position: absolute; font-size: 28px; opacity: 0.65; pointer-events: none; z-index: 2;
+      animation: floatPetals linear infinite;
+    }
+    @keyframes floatPetals { 0% { transform: translateY(-120px) rotate(0deg); } 100% { transform: translateY(120vh) rotate(720deg); } }
+
+    .envelope { width: 390px; max-width: 92vw; height: 260px; background: linear-gradient(135deg, #fef9f3, #f9ede2);
+      border: 6px solid #d4a574; border-radius: 14px; position: relative; box-shadow: 0 30px 80px rgba(0,0,0,0.28);
+      cursor: pointer; overflow: hidden; }
+    .envelope::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #f9ede2, #e8dccf);
+      clip-path: polygon(0 0, 100% 0, 50% 68%); z-index: 4; transition: clip-path 1.6s cubic-bezier(0.68,-0.55,0.27,1.55); }
+    .envelope.open::before { clip-path: polygon(0 0, 100% 0, 50% 100%); }
+    .wax-seal { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 102px; height: 102px;
+      background: radial-gradient(circle at 30% 30%, #ff9f8c, #c94a4a); border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-family: 'Great Vibes', cursive; font-size: 52px; color: white; box-shadow: 0 15px 35px rgba(201,74,74,0.55);
+      z-index: 5; transition: all 1.5s cubic-bezier(0.68,-0.55,0.27,1.55); }
+    .envelope.open .wax-seal { transform: translate(-50%, -170%) scale(0.72); }
+
+    .invitation-card {
+      position: absolute; bottom: -120%; left: 22px; right: 22px; height: 165px;
+      background: white; border: 3px solid #d4a574; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Great Vibes', cursive; font-size: 32px; color: #3d2817;
+      transition: bottom 1.9s cubic-bezier(0.34,1.56,0.64,1) 0.4s; z-index: 3;
+    }
+    .envelope.open .invitation-card { bottom: 38px; }
+
+    .section {
+      min-height: 100vh; padding: 90px 20px; display: flex; align-items: center; justify-content: center;
+      text-align: center; opacity: 0; transform: translateY(50px);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .section.visible { opacity: 1; transform: translateY(0); }
+
+    .hover-scale { transition: transform 0.3s ease; }
+    .hover-scale:hover { transform: scale(1.05); }
+
+    .lang-btn.active { background: #d4a574; color: white; }
+  </style>
+</head>
+<body>
+
+  <div class="floral-overlay"></div>
+  <div id="petals" class="fixed inset-0 pointer-events-none z-2"></div>
+
+  <!-- Envelope -->
+  <div id="envelope-screen" class="envelope-screen fixed inset-0 flex items-center justify-center bg-[#fffaf5]/97 z-50">
+    <div class="text-center">
+      <div id="envelope" class="envelope mx-auto">
+        <div class="invitation-card">Priya &amp; Arjun</div>
+        <div class="wax-seal">PA</div>
+      </div>
+      <p class="mt-10 text-[#8b7355] text-sm tracking-widest">Tap the envelope to begin</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div id="invitation-content" class="hidden">
+
+    <!-- Language Switch -->
+    <div class="fixed top-4 right-4 z-50 flex gap-2 bg-white/90 backdrop-blur rounded-full p-1 shadow-lg">
+      <button onclick="switchLanguage('en')" class="lang-btn active px-5 py-2 text-xs rounded-full">EN</button>
+      <button onclick="switchLanguage('hi')" class="lang-btn px-5 py-2 text-xs rounded-full">हिं</button>
+      <button onclick="switchLanguage('mr')" class="lang-btn px-5 py-2 text-xs rounded-full">मर</button>
+    </div>
+
+    <!-- HERO -->
+    <section class="section" id="hero">
+      <div class="text-center">
+        <p class="lang-en text-[#d4a574] uppercase tracking-[4px] text-sm">Together with their families</p>
+        <p class="lang-hi hidden text-[#d4a574] uppercase tracking-[4px] text-sm">परिवार सहित</p>
+        <p class="lang-mr hidden text-[#d4a574] uppercase tracking-[4px] text-sm">कुटुंबासह</p>
+        <h1 class="text-7xl md:text-[96px] leading-none font-light text-[#3d2817]" style="font-family: 'Great Vibes', cursive;">Priya &amp; Arjun</h1>
+        <p class="text-3xl text-[#d4a574] mt-6">15 December 2026</p>
+        <div class="mt-12 grid grid-cols-4 gap-4 max-w-xs mx-auto">
+          <div><span id="days" class="block text-4xl font-medium">00</span><span class="text-xs">Days</span></div>
+          <div><span id="hours" class="block text-4xl font-medium">00</span><span class="text-xs">Hours</span></div>
+          <div><span id="minutes" class="block text-4xl font-medium">00</span><span class="text-xs">Min</span></div>
+          <div><span id="seconds" class="block text-4xl font-medium">00</span><span class="text-xs">Sec</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOVE STORY -->
+    <section class="section bg-white/80" id="story">
+      <div class="max-w-lg">
+        <h2 class="section-title lang-en">Our Love Story</h2>
+        <h2 class="section-title lang-hi hidden">हमारी प्रेम कहानी</h2>
+        <h2 class="section-title lang-mr hidden">आमची प्रेमकथा</h2>
+        <p class="lang-en text-[#8b7355] text-lg leading-relaxed">A beautiful journey of two hearts finding each other...</p>
+        <p class="lang-hi hidden text-[#8b7355] text-lg leading-relaxed">दो दिलों की खूबसूरत यात्रा...</p>
+        <p class="lang-mr hidden text-[#8b7355] text-lg leading-relaxed">दोन हृदयांची सुंदर यात्रा...</p>
+      </div>
+    </section>
+
+    <!-- TIMINGS -->
+    <section class="section" id="timings">
+      <div class="max-w-md">
+        <h2 class="section-title">Celebration Timings</h2>
+        <div class="space-y-8 mt-10">
+          <div><p class="text-[#d4a574] uppercase text-sm">Ceremony</p><p class="text-3xl font-medium">4:00 PM</p></div>
+          <div><p class="text-[#d4a574] uppercase text-sm">Reception & Dinner</p><p class="text-3xl font-medium">7:00 PM onwards</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VENUE -->
+    <section class="section bg-white/80" id="venue">
+      <div class="max-w-md">
+        <h2 class="section-title">Venue</h2>
+        <i data-lucide="map-pin" class="w-14 h-14 mx-auto my-6 text-[#d4a574]"></i>
+        <p class="text-2xl font-medium">The Grand Palace Hall</p>
+        <p class="text-[#8b7355]">Bandra West, Mumbai, Maharashtra</p>
+        <a href="https://maps.google.com/?q=Bandra+West+Mumbai" target="_blank" class="mt-8 inline-block text-[#d4a574] underline hover:text-[#3d2817]">Open in Google Maps →</a>
+      </div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="section" id="dress">
+      <div>
+        <h2 class="section-title">Dress Code</h2>
+        <div class="inline-block bg-white px-14 py-10 rounded-3xl border border-[#d4a574]/30 mt-8 hover-scale">
+          <p class="text-[#d4a574] uppercase text-xs tracking-widest">Attire</p>
+          <p class="text-3xl font-light">Traditional / Semi-Formal</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section bg-white/80" id="rsvp">
+      <div class="max-w-md mx-auto">
+        <h2 class="section-title">Celebrate With Us</h2>
+        <input id="guest-name" type="text" placeholder="Your Full Name" class="w-full mt-8 border border-gray-300 rounded-2xl px-6 py-4 text-base">
+        <select id="guest-count" class="w-full mt-6 border border-gray-300 rounded-2xl px-6 py-4 text-base">
+          <option value="1">1 Person</option>
+          <option value="2" selected>2 People</option>
+          <option value="3">3 People</option>
+          <option value="4">4 People</option>
+        </select>
+        <button id="rsvp-btn" class="rsvp-button w-full mt-10 hover-scale">Submit RSVP</button>
+        <button onclick="checkHostAccess()" class="mt-12 text-[#d4a574] text-xs flex items-center gap-2 mx-auto hover-scale">
+          <i data-lucide="shield-check"></i> Host Access Only
+        </button>
+      </div>
+    </section>
+
+    <!-- LOOKING FORWARD -->
+    <section class="section bg-white/70">
+      <div class="max-w-lg">
+        <h2 class="section-title lang-en">We look forward to celebrating with you</h2>
+        <h2 class="section-title lang-hi hidden">हम आपके साथ जश्न मनाने के लिए उत्सुक हैं</h2>
+        <h2 class="section-title lang-mr hidden">आम्ही तुमच्यासोबत साजरा करण्यास उत्सुक आहोत</h2>
+        <p class="mt-10 text-[#8b7355]">With love,<br><span class="text-[#d4a574]">Priya & Arjun</span></p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const HOST_PASSWORD = "host2026";
+
+    // Floating petals
+    function createPetals() {
+      const container = document.getElementById('petals');
+      for (let i = 0; i < 22; i++) {
+        const petal = document.createElement('div');
+        petal.className = 'petal';
+        petal.textContent = ['🌸','🌺','🌼','💐'][Math.floor(Math.random()*4)];
+        petal.style.left = Math.random() * 100 + 'vw';
+        petal.style.animationDuration = (Math.random() * 25 + 32) + 's';
+        petal.style.animationDelay = '-' + Math.random() * 40 + 's';
+        container.appendChild(petal);
+      }
+    }
+
+    // Countdown
+    function startCountdown() {
+      const wedding = new Date('2026-12-15T16:00:00').getTime();
+      setInterval(() => {
+        const diff = wedding - Date.now();
+        document.getElementById('days').textContent = Math.floor(diff / (1000*60*60*24)).toString().padStart(2,'0');
+        document.getElementById('hours').textContent = Math.floor((diff % (1000*60*60*24)) / (1000*60*60)).toString().padStart(2,'0');
+        document.getElementById('minutes').textContent = Math.floor((diff % (1000*60*60)) / (1000*60)).toString().padStart(2,'0');
+        document.getElementById('seconds').textContent = Math.floor((diff % (1000*60)) / 1000).toString().padStart(2,'0');
+      }, 1000);
+    }
+
+    // Language Switch
+    function switchLanguage(lang) {
+      document.querySelectorAll('.lang-en, .lang-hi, .lang-mr').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll(`.lang-${lang}`).forEach(el => el.classList.remove('hidden'));
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    // Envelope with delay + card behind flap
+    document.getElementById('envelope').addEventListener('click', function() {
+      this.classList.add('open');
+      setTimeout(() => {
+        document.getElementById('envelope-screen').style.opacity = '0';
+        setTimeout(() => {
+          document.getElementById('envelope-screen').classList.add('hidden');
+          document.getElementById('invitation-content').classList.remove('hidden');
+          document.querySelectorAll('.section').forEach((s,i) => setTimeout(() => s.classList.add('visible'), i*160));
+        }, 900);
+      }, 1700);
+    });
+
+    // RSVP
+    document.getElementById('rsvp-btn').addEventListener('click', () => {
+      const name = document.getElementById('guest-name').value.trim();
+      const count = document.getElementById('guest-count').value;
+      if (!name) return alert("Please enter your name");
+      let responses = JSON.parse(localStorage.getItem('wedding_rsvp')) || [];
+      responses.unshift({name, guests: count, time: new Date().toLocaleString('en-IN')});
+      localStorage.setItem('wedding_rsvp', JSON.stringify(responses));
+      alert(`Thank you ${name}! We look forward to welcoming ${count} of you.`);
+      document.getElementById('guest-name').value = '';
+    });
+
+    // Host Access
+    function checkHostAccess() {
+      const pass = prompt("Enter Host Password:");
+      if (pass === HOST_PASSWORD) {
+        let responses = JSON.parse(localStorage.getItem('wedding_rsvp')) || [];
+        let msg = "Guest Responses:\n\n";
+        responses.forEach(r => msg += `• ${r.name} — ${r.guests} people\n`);
+        alert(msg || "No responses yet.");
+      } else alert("Incorrect Password");
+    }
+
+    // Initialize
+    window.onload = () => {
+      lucide.createIcons();
+      createPetals();
+      startCountdown();
+      switchLanguage('en');
+    };
+  </script>
+</body>
+</html>
