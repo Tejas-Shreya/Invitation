@@ -216,13 +216,17 @@
       border:1px solid rgba(201,150,90,.18);
     }
     .couple-avatar {
-      width:140px; height:140px; border-radius:50%;
-      margin:0 auto 24px;
-      background:linear-gradient(135deg,var(--blush),#f0d0c0);
-      border:3px solid var(--gold-lt);
-      box-shadow:0 8px 28px var(--sh);
-      display:flex; align-items:center; justify-content:center;
-      font-size:3rem;
+     width: 150px; 
+  height: 150px; 
+  border-radius: 50%;
+  margin: 0 auto 24px;
+  background: linear-gradient(135deg,var(--blush),#f0d0c0);
+  border: 5px solid var(--gold-lt);
+  box-shadow: 0 12px 35px var(--sh-lg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
     }
     .couple-script {
       font-family:'Great Vibes',cursive;
@@ -460,7 +464,9 @@
   <section class="section" id="couple">
     <div class="inner">
       <div class="couple-card reveal">
-        <div class="couple-avatar">🌸</div>
+        <div class="couple-avatar"><img src="https://i.ibb.co/RTFMPZ07/Bo7xg-crop.jpg" 
+       alt="Tejas & Shreya" 
+       style="width:100%; height:100%; object-fit:cover; border-radius:50%;"></div>
         <p class="eyebrow">The Couple</p>
         <h2 class="couple-script">Tejas &amp; Shreya</h2>
         <div class="gold-rule"><span>✦</span></div>
@@ -725,13 +731,13 @@
     const guestLabel = count === '5' ? '5 or more' : count;
 
     const message =
-`Hi Tejas!
+`Hi Tejas & Shreya! 💐
 
 I would like to RSVP for your Wedding Reception on 26 April 2026.
 
-Name: ${name}
-Number of Guests: ${guestLabel}
-Attending: ${attending}
+👤 Name: ${name}
+👥 Number of Guests: ${guestLabel}
+✉️ Attending: ${attending}
 
 Looking forward to celebrating this beautiful occasion with you! ✨
 
